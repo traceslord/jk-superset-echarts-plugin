@@ -1,8 +1,8 @@
-import { defaultby } from 'src/echarts/utils/defaultby';
-import { groupby } from 'src/echarts/utils/groupby';
-import { sort } from 'src/echarts/utils/sort';
-import { formatColor } from 'src/echarts/utils/colors';
-import { formatDate } from 'src/echarts/utils/dates';
+import { defaultby } from '../utils/defaultby';
+import { groupby } from '../utils/groupby';
+import { sort } from '../utils/sort';
+import { formatColor } from '../utils/colors';
+import { formatDate } from '../utils/dates';
 import selectLayout from '../layout/selectLayout';
 
 function drawChart(chart, teamData, teamIndex, propsConfig, propsLabel) {

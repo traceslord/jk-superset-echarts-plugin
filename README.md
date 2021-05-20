@@ -30,19 +30,6 @@ new JkEchartsLineChartPlugin().configure({ key: 'jk_echarts_line' }).register();
 new JkEchartsPieChartPlugin().configure({ key: 'jk_echarts_pie' }).register();
 ```
 
-```js
-import {
-  JkEchartsBar,
-  JkEchartsLine,
-  JkEchartsPie,
-} from 'jk-superset-echarts-plugin/controlPanels';
-
-getChartControlPanelRegistry()
-  .registerValue('jk_echarts_bar', JkEchartsBar)
-  .registerValue('jk_echarts_line', JkEchartsLine)
-  .registerValue('jk_echarts_pie', JkEchartsPie);
-```
-
 ## License
 [MIT](https://github.com/traceslord/jk-superset-echarts-plugin/blob/master/LICENSE)
 

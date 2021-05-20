@@ -1,7 +1,8 @@
-import { defaultby } from 'src/echarts/utils/defaultby';
-import { groupby } from 'src/echarts/utils/groupby';
-import { sort } from 'src/echarts/utils/sort';
-import { formatColor } from 'src/echarts/utils/colors';
+import { defaultby } from '../utils/defaultby';
+import { groupby } from '../utils/groupby';
+import { sort } from '../utils/sort';
+import { formatColor } from '../utils/colors';
+import { formatDate } from '../utils/dates';
 import selectLayout from '../layout/selectLayout';
 
 function drawChart(chart, teamData, teamIndex, propsConfig, propsLabel) {
@@ -13,6 +14,7 @@ function drawChart(chart, teamData, teamIndex, propsConfig, propsLabel) {
       chartData,
       propsConfig.echartsGroupby,
       propsConfig.echartsGroupbyAggregate,
+      propsConfig.echartsX,
     );
   }
   if (propsConfig.echartsSort) {
@@ -23,47 +25,53 @@ function drawChart(chart, teamData, teamIndex, propsConfig, propsLabel) {
   propsConfig.echartsLegendNotSelected.forEach(data => {
     legendNotSelected[propsLabel[data]] = false;
   });
-  const seriesValues = propsConfig.echartsIndicators.map(
-    data => chartData[0][data],
-  );
-  const series = [
-    {
-      type: 'pie',
-      legendHoverLink: propsConfig.echartsSeriesLegendHoverLink,
-      clockwise: propsConfig.echartsPieClockwise,
-      startAngle: propsConfig.echartsPieStartAngle,
-      minAngle: propsConfig.echartsPieMinAngle,
-      minShowLabelAngle: propsConfig.echartsPieMinShowLabelAngle,
-      roseType: propsConfig.echartsPieRoseType,
-      avoidLabelOverlap: propsConfig.echartsPieAvoidLabelOverlap,
-      stillShowZeroSum: propsConfig.echartsPieStillShowZeroSum,
-      top: propsConfig.echartsPieTop,
-      bottom: propsConfig.echartsPieBottom,
-      left: propsConfig.echartsPieLeft,
-      right: propsConfig.echartsPieRight,
-      width: propsConfig.echartsPieWidth,
-      height: propsConfig.echartsPieHeight,
-      label: {
-        show: propsConfig.echartsPieLabelShow,
-        position: propsConfig.echartsPieLabelPosition,
-      },
-      center: [
-        propsConfig.echartsSeriesCenter1,
-        propsConfig.echartsSeriesCenter2,
-      ],
-      radius: [
-        propsConfig.echartsSeriesRadius1,
-        propsConfig.echartsSeriesRadius2,
-      ],
-      data: propsConfig.echartsIndicators.map((data, index) => ({
-        name: propsLabel[data],
-        value: seriesValues[index],
-      })),
+  const xAxis = {
+    show: propsConfig.echartsXAxisShow,
+    type: 'category',
+    name: propsConfig.echartsXAxisName,
+    nameLocation: propsConfig.echartsXAxisNameLocation,
+    nameGap: propsConfig.echartsXAxisNameGap,
+    nameRotate: propsConfig.echartsXAxisNameRotate,
+    inverse: propsConfig.echartsXAxisInverse,
+    axisLabel: {
+      interval: propsConfig.echartsXAxisLabelInterval,
+      rotate: propsConfig.echartsXAxisLabelRotate,
     },
-  ];
-  if (propsConfig.echartsSeriesName) {
-    series[0].name = propsConfig.echartsSeriesName;
-  }
+    data: chartData.map(data => {
+      if (propsConfig.echartsXAxisDataFormat) {
+        return formatDate.formatBox(
+          propsConfig.echartsXAxisDataFormatType,
+          data[propsConfig.echartsX],
+        );
+      }
+      return data[propsConfig.echartsX];
+    }),
+  };
+  const yAxis = {
+    show: propsConfig.echartsYAxisShow,
+    type: 'value',
+    name: propsConfig.echartsYAxisName,
+    nameLocation: propsConfig.echartsYAxisNameLocation,
+    nameGap: propsConfig.echartsYAxisNameGap,
+    nameRotate: propsConfig.echartsYAxisNameRotate,
+    inverse: propsConfig.echartsYAxisInverse,
+    axisLabel: {
+      rotate: propsConfig.echartsYAxisLabelRotate,
+    },
+  };
+  const series = propsConfig.echartsIndicators.map(item => ({
+    type: 'bar',
+    name: propsLabel[item],
+    stack: propsConfig.echartsSeriesStack,
+    barWidth: propsConfig.echartsSeriesBarWidth,
+    barMaxWidth: propsConfig.echartsSeriesBarMaxWidth,
+    barMinWidth: propsConfig.echartsSeriesBarMinWidth,
+    barMinHeight: propsConfig.echartsSeriesBarMinHeight,
+    barGap: propsConfig.echartsSeriesBarGap,
+    barCategoryGap: propsConfig.echartsSeriesBarCategoryGap,
+    legendHoverLink: propsConfig.echartsSeriesLegendHoverLink,
+    data: chartData.map(data => data[item]),
+  }));
 
   chart.setOption({
     legend: {
@@ -90,9 +98,27 @@ function drawChart(chart, teamData, teamIndex, propsConfig, propsLabel) {
       selected: legendNotSelected,
       data: propsConfig.echartsIndicators.map(data => propsLabel[data]),
     },
+    grid: {
+      show: propsConfig.echartsGridShow,
+      top: propsConfig.echartsGridTop,
+      bottom: propsConfig.echartsGridBottom,
+      left: propsConfig.echartsGridLeft,
+      right: propsConfig.echartsGridRight,
+      width: propsConfig.echartsGridWidth,
+      height: propsConfig.echartsGridHeight,
+      borderWidth: propsConfig.echartsGridBorderWidth,
+      borderColor: formatColor(propsConfig.echartsGridBorderColor),
+      backgroundColor: formatColor(propsConfig.echartsGridBackgroundColor),
+      containLabel: propsConfig.echartsGridContainLabel,
+    },
+    xAxis: propsConfig.echartsAxisSwap ? yAxis : xAxis,
+    yAxis: propsConfig.echartsAxisSwap ? xAxis : yAxis,
     tooltip: {
       show: propsConfig.echartsTooltipShow,
       trigger: propsConfig.echartsTooltipTrigger,
+      axisPointer: {
+        type: propsConfig.echartsTooltipAxisPointerType,
+      },
       triggerOn: propsConfig.echartsTooltipTriggerOn,
       // eslint-disable-next-line no-new-func
       formatter: new Function(
@@ -140,8 +166,8 @@ function drawChart(chart, teamData, teamIndex, propsConfig, propsLabel) {
   });
 }
 
-function echartsPie(element, props) {
+function echartsBar(element, props) {
   selectLayout(element, props, drawChart);
 }
 
-export default echartsPie;
+export default echartsBar;

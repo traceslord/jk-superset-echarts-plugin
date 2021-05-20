@@ -1,5 +1,5 @@
 import { sections } from '@superset-ui/chart-controls';
-import controls, { FIGURE_SHAPE } from './controls';
+import controls, { FIGURE_SHAPE } from '../controls';
 
 const {
   echartsX,

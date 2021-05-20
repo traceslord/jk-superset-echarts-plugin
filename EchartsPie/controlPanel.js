@@ -1,5 +1,5 @@
 import { sections } from '@superset-ui/chart-controls';
-import controls, { formatSelectOptions } from './controls';
+import controls, { formatSelectOptions } from '../controls';
 
 const {
   echartsIndicators,

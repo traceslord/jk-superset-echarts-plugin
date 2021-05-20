@@ -1,5 +1,5 @@
 import { sections } from '@superset-ui/chart-controls';
-import controls from './controls';
+import controls from '../controls';
 
 const {
   echartsX,
