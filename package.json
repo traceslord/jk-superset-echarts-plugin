@@ -1,0 +1,32 @@
+{
+  "name": "jk-superset-echarts-plugin",
+  "version": "1.0.0",
+  "description": "JK Superset Chart - Echarts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/traceslord/jk-superset-echarts-plugin.git"
+  },
+  "keywords": [
+    "JK",
+    "superset",
+    "echarts"
+  ],
+  "author": "zhuhuajian",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/traceslord/jk-superset-echarts-plugin/issues"
+  },
+  "homepage": "https://github.com/traceslord/jk-superset-echarts-plugin#readme",
+  "dependencies": {
+    "@superset-ui/chart-controls": "^0.17.10",
+    "@superset-ui/core": "^0.17.10",
+    "echarts": "^5.1.1"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1"
+  }
+}
