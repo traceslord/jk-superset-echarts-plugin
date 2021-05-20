@@ -1,6 +1,6 @@
 import React from 'react';
 import { validateNonEmpty } from '@superset-ui/core';
-import { ColumnOption } from '@superset-ui/chart-controls';
+import { ColumnOption, formatSelectOptions } from '@superset-ui/chart-controls';
 
 export function columnChoices(datasource) {
   if (datasource && datasource.columns) {
@@ -11,10 +11,6 @@ export function columnChoices(datasource) {
       );
   }
   return [];
-}
-
-export function formatSelectOptions(options) {
-  return options.map(opt => [opt, opt.toString()]);
 }
 
 export const FIGURE_SHAPE = [
@@ -56,8 +52,15 @@ const controls = {
       label: '指标',
       description: '所要显示的指标',
       default: [],
-      optionRenderer: c => <ColumnOption column={c} showType />,
-      valueRenderer: c => <ColumnOption column={c} />,
+      optionRenderer: c =>
+        React.createElement(ColumnOption, {
+          column: c,
+          showType: true,
+        }),
+      valueRenderer: c =>
+        React.createElement(ColumnOption, {
+          column: c,
+        }),
       valueKey: 'column_name',
       mapStateToProps: state => ({
         options: state.datasource ? state.datasource.columns : [],
@@ -99,8 +102,15 @@ const controls = {
       label: 'Y 轴（左）',
       description: '左 Y 轴要显示的列',
       default: [],
-      optionRenderer: c => <ColumnOption column={c} showType />,
-      valueRenderer: c => <ColumnOption column={c} />,
+      optionRenderer: c =>
+        React.createElement(ColumnOption, {
+          column: c,
+          showType: true,
+        }),
+      valueRenderer: c =>
+        React.createElement(ColumnOption, {
+          column: c,
+        }),
       valueKey: 'column_name',
       mapStateToProps: state => ({
         options: state.datasource ? state.datasource.columns : [],
@@ -116,8 +126,15 @@ const controls = {
       label: 'Y 轴（右）',
       description: '右 Y 轴要显示的列',
       default: [],
-      optionRenderer: c => <ColumnOption column={c} showType />,
-      valueRenderer: c => <ColumnOption column={c} />,
+      optionRenderer: c =>
+        React.createElement(ColumnOption, {
+          column: c,
+          showType: true,
+        }),
+      valueRenderer: c =>
+        React.createElement(ColumnOption, {
+          column: c,
+        }),
       valueKey: 'column_name',
       mapStateToProps: state => ({
         options: state.datasource ? state.datasource.columns : [],
@@ -407,8 +424,15 @@ const controls = {
       label: '默认不选中状态',
       description: '图例默认不选中状态',
       default: [],
-      optionRenderer: c => <ColumnOption column={c} showType />,
-      valueRenderer: c => <ColumnOption column={c} />,
+      optionRenderer: c =>
+        React.createElement(ColumnOption, {
+          column: c,
+          showType: true,
+        }),
+      valueRenderer: c =>
+        React.createElement(ColumnOption, {
+          column: c,
+        }),
       valueKey: 'column_name',
       mapStateToProps: state => ({
         options: state.datasource ? state.datasource.columns : [],
