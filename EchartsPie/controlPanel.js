@@ -58,7 +58,6 @@ export default {
       label: '配置选项',
       expanded: true,
       controlSetRows: [
-        ['metrics'],
         [echartsIndicators],
         [echartsSelect],
         [echartsPicker],
