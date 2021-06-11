@@ -77,6 +77,23 @@ export const defaultby = config => {
   if (!val.echartsPieAvoidLabelOverlap) val.echartsPieAvoidLabelOverlap = false;
   if (!val.echartsPieStillShowZeroSum) val.echartsPieStillShowZeroSum = false;
 
+  if (!val.echartsHydrographFontSize) val.echartsHydrographFontSize = 0;
+  if (!val.echartsHydrographWarningThreshold) {
+    val.echartsHydrographWarningThreshold = 0;
+  }
+  if (!val.echartsHydrographDangerThreshold) {
+    val.echartsHydrographDangerThreshold = 0;
+  }
+  if (!val.echartsHydrographOutlineShow) {
+    val.echartsHydrographOutlineShow = false;
+  }
+  if (!val.echartsHydrographOutlineBorderWidth) {
+    val.echartsHydrographOutlineBorderWidth = 0;
+  }
+  if (!val.echartsHydrographOutlineBorderDistance) {
+    val.echartsHydrographOutlineBorderDistance = 0;
+  }
+
   // legend
   if (!val.echartsLegendShow) val.echartsLegendShow = false;
   if (!val.echartsLegendTop) val.echartsLegendTop = '';

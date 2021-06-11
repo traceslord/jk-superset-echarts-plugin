@@ -1,6 +1,6 @@
 {
   "name": "jk-superset-echarts-plugin",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "JK Superset Chart - Echarts",
   "main": "index.js",
   "scripts": {
@@ -24,7 +24,8 @@
   "dependencies": {
     "@superset-ui/chart-controls": "^0.17.10",
     "@superset-ui/core": "^0.17.10",
-    "echarts": "^5.1.1"
+    "echarts": "^5.1.1",
+    "echarts-liquidfill": "^3.0.0"
   },
   "peerDependencies": {
     "react": "^16.13.1"

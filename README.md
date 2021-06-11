@@ -23,11 +23,13 @@ import {
   JkEchartsBarChartPlugin,
   JkEchartsLineChartPlugin,
   JkEchartsPieChartPlugin,
+  JkEchartsHydrographChartPlugin,
 } from 'jk-superset-echarts-plugin';
 
 new JkEchartsBarChartPlugin().configure({ key: 'jk_echarts_bar' }).register();
 new JkEchartsLineChartPlugin().configure({ key: 'jk_echarts_line' }).register();
 new JkEchartsPieChartPlugin().configure({ key: 'jk_echarts_pie' }).register();
+new JkEchartsHydrographChartPlugin().configure({ key: 'jk_echarts_hydrograph' }).register();
 ```
 
 ## License
