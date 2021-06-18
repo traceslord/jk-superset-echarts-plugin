@@ -120,6 +120,19 @@ export default {
       controlSetRows: [
         [
           {
+            name: 'jk_number_formatter',
+            config: {
+              type: 'TextAreaControl',
+              language: 'javascript',
+              label: '数字内容格式器',
+              description: '支持回调函数的形式，参数为 num',
+              default: '',
+              renderTrigger: true,
+            },
+          },
+        ],
+        [
+          {
             name: 'jk_number_font_size',
             config: {
               type: 'TextControl',
