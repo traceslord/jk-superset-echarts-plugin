@@ -3,11 +3,13 @@ import { formatColor } from '../utils/colors';
 function jkNumber(element, props) {
   const { config } = props;
   const randomNumber = Math.round(Math.random() * 1000000000000000);
-  // eslint-disable-next-line no-new-func
-  const formatNumber = new Function(
-    'num',
-    `return ${config.jkNumberFormatter}`,
-  )()(props.data);
+  let value = props.data;
+  if (config.jkNumberFormatter) {
+    // eslint-disable-next-line no-new-func
+    value = new Function('num', `return ${config.jkNumberFormatter}`)()(
+      props.data,
+    );
+  }
   const html = `
   <div
     id="jk-number-${randomNumber}"
@@ -31,7 +33,7 @@ function jkNumber(element, props) {
           font-weight: ${config.jkNumberFontWeight};
           color: ${formatColor(config.jkNumberColor)};
         "
-      >${config.jkNumberFormatter ? formatNumber : props.data}</div>
+      >${value}</div>
       <div
         style="
           margin-top: ${Number(config.jkSpacing)}px;
