@@ -21,16 +21,18 @@ lookup this chart throughout the app.
 ```js
 import {
   JkEchartsBarChartPlugin,
-  JkEchartsLineChartPlugin,
-  JkEchartsPieChartPlugin,
   JkEchartsHydrographChartPlugin,
+  JkEchartsLineChartPlugin,
+  JkEchartsLineBarChartPlugin,
+  JkEchartsPieChartPlugin,
   JkNumberChartPlugin,
 } from 'jk-superset-echarts-plugin';
 
 new JkEchartsBarChartPlugin().configure({ key: 'jk_echarts_bar' }).register();
-new JkEchartsLineChartPlugin().configure({ key: 'jk_echarts_line' }).register();
-new JkEchartsPieChartPlugin().configure({ key: 'jk_echarts_pie' }).register();
 new JkEchartsHydrographChartPlugin().configure({ key: 'jk_echarts_hydrograph' }).register();
+new JkEchartsLineChartPlugin().configure({ key: 'jk_echarts_line' }).register();
+new JkEchartsLineBarChartPlugin().configure({ key: 'jk_echarts_line_bar' }).register();
+new JkEchartsPieChartPlugin().configure({ key: 'jk_echarts_pie' }).register();
 new JkNumberChartPlugin().configure({ key: 'jk_number' }).register();
 ```
 
