@@ -26,10 +26,36 @@ function drawChart(chart, teamData, teamIndex, propsConfig, propsLabel) {
     legendNotSelected[propsLabel[data]] = false;
   });
   const legendData = propsConfig.echartsYLeft.concat(propsConfig.echartsYRight);
+  const swap = propsConfig.echartsBaseSwap;
+  const yAxisLine = {
+    show: propsConfig.echartsYAxisShow,
+    type: 'value',
+    name: propsConfig.echartsYAxisName,
+    nameLocation: propsConfig.echartsYAxisNameLocation,
+    nameGap: propsConfig.echartsYAxisNameGap,
+    nameRotate: propsConfig.echartsYAxisNameRotate,
+    inverse: propsConfig.echartsYAxisInverse,
+    axisLabel: {
+      rotate: propsConfig.echartsYAxisLabelRotate,
+    },
+  };
+  const yAxisBar = {
+    show: propsConfig.echartsYAxisShow2,
+    type: 'value',
+    name: propsConfig.echartsYAxisName2,
+    nameLocation: propsConfig.echartsYAxisNameLocation2,
+    nameGap: propsConfig.echartsYAxisNameGap2,
+    nameRotate: propsConfig.echartsYAxisNameRotate2,
+    inverse: propsConfig.echartsYAxisInverse2,
+    axisLabel: {
+      rotate: propsConfig.echartsYAxisLabelRotate2,
+    },
+  };
   const series = propsConfig.echartsYLeft
     .map(item => ({
       type: 'line',
       name: propsLabel[item],
+      yAxisIndex: swap ? 0 : 1,
       showSymbol: propsConfig.echartsSeriesShowSymbol,
       showAllSymbol: propsConfig.echartsSeriesShowAllSymbol,
       symbol: propsConfig.echartsSeriesSymbol,
@@ -61,7 +87,7 @@ function drawChart(chart, teamData, teamIndex, propsConfig, propsLabel) {
       propsConfig.echartsYRight.map(item => ({
         type: 'bar',
         name: propsLabel[item],
-        yAxisIndex: 1,
+        yAxisIndex: swap ? 1 : 0,
         stack: propsConfig.echartsSeriesStack2,
         barWidth: propsConfig.echartsSeriesBarWidth,
         barMaxWidth: propsConfig.echartsSeriesBarMaxWidth,
@@ -134,32 +160,7 @@ function drawChart(chart, teamData, teamIndex, propsConfig, propsLabel) {
         return data[propsConfig.echartsX];
       }),
     },
-    yAxis: [
-      {
-        show: propsConfig.echartsYAxisShow,
-        type: 'value',
-        name: propsConfig.echartsYAxisName,
-        nameLocation: propsConfig.echartsYAxisNameLocation,
-        nameGap: propsConfig.echartsYAxisNameGap,
-        nameRotate: propsConfig.echartsYAxisNameRotate,
-        inverse: propsConfig.echartsYAxisInverse,
-        axisLabel: {
-          rotate: propsConfig.echartsYAxisLabelRotate,
-        },
-      },
-      {
-        show: propsConfig.echartsYAxisShow2,
-        type: 'value',
-        name: propsConfig.echartsYAxisName2,
-        nameLocation: propsConfig.echartsYAxisNameLocation2,
-        nameGap: propsConfig.echartsYAxisNameGap2,
-        nameRotate: propsConfig.echartsYAxisNameRotate2,
-        inverse: propsConfig.echartsYAxisInverse2,
-        axisLabel: {
-          rotate: propsConfig.echartsYAxisLabelRotate2,
-        },
-      },
-    ],
+    yAxis: swap ? [yAxisLine, yAxisBar] : [yAxisBar, yAxisLine],
     tooltip: {
       show: propsConfig.echartsTooltipShow,
       trigger: propsConfig.echartsTooltipTrigger,

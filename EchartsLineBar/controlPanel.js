@@ -148,6 +148,28 @@ export default {
       ],
     },
     {
+      label: '基础配置',
+      expanded: true,
+      controlSetRows: [
+        [
+          {
+            name: 'echarts_base_swap',
+            config: {
+              type: 'SelectControl',
+              label: 'Y 轴互换',
+              default: true,
+              choices: [
+                [true, '左折线右柱状'],
+                [false, '左柱状右折线'],
+              ],
+              clearable: false,
+              renderTrigger: true,
+            },
+          },
+        ],
+      ],
+    },
+    {
       label: '折线图配置',
       expanded: true,
       controlSetRows: [
