@@ -26,6 +26,7 @@ import {
   JkEchartsLineChartPlugin,
   JkEchartsLineBarChartPlugin,
   JkEchartsPieChartPlugin,
+  JkEchartsScatterChartPlugin,
   JkNumberChartPlugin,
 } from 'jk-superset-echarts-plugin';
 
@@ -35,6 +36,7 @@ new JkEchartsHydrographChartPlugin().configure({ key: 'jk_echarts_hydrograph' })
 new JkEchartsLineChartPlugin().configure({ key: 'jk_echarts_line' }).register();
 new JkEchartsLineBarChartPlugin().configure({ key: 'jk_echarts_line_bar' }).register();
 new JkEchartsPieChartPlugin().configure({ key: 'jk_echarts_pie' }).register();
+new JkEchartsScatterChartPlugin().configure({ key: 'jk_echarts_scatter' }).register();
 new JkNumberChartPlugin().configure({ key: 'jk_number' }).register();
 ```
 

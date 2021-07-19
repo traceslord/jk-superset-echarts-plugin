@@ -4,4 +4,5 @@ export { default as JkEchartsHydrographChartPlugin } from './EchartsHydrograph/E
 export { default as JkEchartsLineChartPlugin } from './EchartsLine/EchartsLineChartPlugin';
 export { default as JkEchartsLineBarChartPlugin } from './EchartsLineBar/EchartsLineBarChartPlugin';
 export { default as JkEchartsPieChartPlugin } from './EchartsPie/EchartsPieChartPlugin';
+export { default as JkEchartsScatterChartPlugin } from './EchartsScatter/EchartsScatterChartPlugin';
 export { default as JkNumberChartPlugin } from './JkNumber/JkNumberChartPlugin';
