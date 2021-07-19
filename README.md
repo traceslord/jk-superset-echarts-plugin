@@ -21,6 +21,7 @@ lookup this chart throughout the app.
 ```js
 import {
   JkEchartsBarChartPlugin,
+  JkEchartsGanttChartPlugin,
   JkEchartsHydrographChartPlugin,
   JkEchartsLineChartPlugin,
   JkEchartsLineBarChartPlugin,
@@ -29,6 +30,7 @@ import {
 } from 'jk-superset-echarts-plugin';
 
 new JkEchartsBarChartPlugin().configure({ key: 'jk_echarts_bar' }).register();
+new JkEchartsGanttChartPlugin().configure({ key: 'jk_echarts_gantt' }).register();
 new JkEchartsHydrographChartPlugin().configure({ key: 'jk_echarts_hydrograph' }).register();
 new JkEchartsLineChartPlugin().configure({ key: 'jk_echarts_line' }).register();
 new JkEchartsLineBarChartPlugin().configure({ key: 'jk_echarts_line_bar' }).register();

@@ -94,6 +94,10 @@ export const defaultby = config => {
     val.echartsHydrographOutlineBorderDistance = 0;
   }
 
+  if (!val.echartsSeriesMarkLineFormatterNum) {
+    val.echartsSeriesMarkLineFormatterNum = 0;
+  }
+
   // legend
   if (!val.echartsLegendShow) val.echartsLegendShow = false;
   if (!val.echartsLegendTop) val.echartsLegendTop = '';
