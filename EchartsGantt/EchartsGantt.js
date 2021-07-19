@@ -198,6 +198,7 @@ function drawChart(chart, teamData, teamIndex, propsConfig, propsLabel) {
       },
     },
     yAxis: {
+      show: propsConfig.echartsYAxisShow,
       type: 'category',
       name: propsConfig.echartsYAxisName,
       nameLocation: propsConfig.echartsYAxisNameLocation,
