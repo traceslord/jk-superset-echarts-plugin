@@ -55,13 +55,13 @@ function drawChart(chart, teamData, teamIndex, propsConfig, propsLabel) {
       name: '计划开始时间',
       stack: 'time',
       itemStyle: {
-        normal: {
+        color: formatColor(propsConfig.echartsGanttHidden),
+        borderColor: formatColor(propsConfig.echartsGanttHidden),
+      },
+      emphasis: {
+        itemStyle: {
           color: formatColor(propsConfig.echartsGanttHidden),
-          barBorderColor: formatColor(propsConfig.echartsGanttHidden),
-        },
-        emphasis: {
-          color: formatColor(propsConfig.echartsGanttHidden),
-          barBorderColor: formatColor(propsConfig.echartsGanttHidden),
+          borderColor: formatColor(propsConfig.echartsGanttHidden),
         },
       },
       barWidth: 15,
@@ -74,13 +74,13 @@ function drawChart(chart, teamData, teamIndex, propsConfig, propsLabel) {
       name: '计划结束时间',
       stack: 'time',
       itemStyle: {
-        normal: {
+        color: formatColor(propsConfig.echartsGanttPeriod),
+        borderColor: formatColor(propsConfig.echartsGanttHidden),
+      },
+      emphasis: {
+        itemStyle: {
           color: formatColor(propsConfig.echartsGanttPeriod),
-          barBorderColor: formatColor(propsConfig.echartsGanttHidden),
-        },
-        emphasis: {
-          color: formatColor(propsConfig.echartsGanttPeriod),
-          barBorderColor: formatColor(propsConfig.echartsGanttHidden),
+          borderColor: formatColor(propsConfig.echartsGanttHidden),
         },
       },
       barWidth: 15,
@@ -111,13 +111,13 @@ function drawChart(chart, teamData, teamIndex, propsConfig, propsLabel) {
       name: '当前进度',
       stack: 'time',
       itemStyle: {
-        normal: {
+        color: formatColor(propsConfig.echartsGanttProgress),
+        borderColor: formatColor(propsConfig.echartsGanttHidden),
+      },
+      emphasis: {
+        itemStyle: {
           color: formatColor(propsConfig.echartsGanttProgress),
-          barBorderColor: formatColor(propsConfig.echartsGanttHidden),
-        },
-        emphasis: {
-          color: formatColor(propsConfig.echartsGanttProgress),
-          barBorderColor: formatColor(propsConfig.echartsGanttHidden),
+          borderColor: formatColor(propsConfig.echartsGanttHidden),
         },
       },
       barWidth: 15,
