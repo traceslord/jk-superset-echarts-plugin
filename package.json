@@ -1,6 +1,6 @@
 {
   "name": "jk-superset-echarts-plugin",
-  "version": "2.5.1",
+  "version": "2.5.2",
   "description": "JK Superset Chart - Echarts",
   "main": "index.js",
   "scripts": {

@@ -96,6 +96,7 @@ export default {
         [echartsPicker],
         [echartsGroupby, echartsGroupbyAggregate],
         [echartsSort, echartsOrder],
+        ['row_limit'],
         ['adhoc_filters'],
         [echartsBackgroundColor],
       ],
