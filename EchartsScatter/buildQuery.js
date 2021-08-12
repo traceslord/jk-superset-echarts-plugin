@@ -5,6 +5,7 @@ export default function buildQuery(formData) {
     queryFields: {
       echarts_x: 'columns',
       echarts_y: 'columns',
+      echarts_name: 'columns',
       echarts_indicator: 'columns',
       echarts_select: 'columns',
       echarts_picker: 'columns',

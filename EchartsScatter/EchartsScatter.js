@@ -44,9 +44,10 @@ function drawChart(chart, teamData, teamIndex, propsConfig, propsLabel) {
     data: chartData.map(subitem => [
       subitem[propsConfig.echartsX],
       subitem[item],
-      subitem[propsConfig.echartsIndicator],
-      (subitem[item] / subitem[propsConfig.echartsX]) *
-        propsConfig.echartsRadius,
+      subitem[propsConfig.echartsName],
+      propsConfig.echartsIndicator
+        ? subitem[propsConfig.echartsIndicator]
+        : propsConfig.echartsRadius,
     ]),
     markLine: {
       lineStyle: {

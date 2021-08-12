@@ -117,7 +117,7 @@ export default {
         ],
         [
           {
-            name: 'echarts_indicator',
+            name: 'echarts_name',
             config: {
               type: 'SelectControl',
               label: '名称',
@@ -127,6 +127,20 @@ export default {
                 choices: columnChoices(state.datasource),
               }),
               validators: [validateNonEmpty],
+            },
+          },
+        ],
+        [
+          {
+            name: 'echarts_indicator',
+            config: {
+              type: 'SelectControl',
+              label: '半径',
+              description: '所要显示的半径',
+              default: null,
+              mapStateToProps: state => ({
+                choices: columnChoices(state.datasource),
+              }),
             },
           },
         ],
@@ -148,9 +162,10 @@ export default {
             name: 'echarts_radius',
             config: {
               type: 'TextControl',
-              label: '半径系数（半径：Y 轴 / X 轴 * 系数）',
-              description: '气泡半径尺寸的系数',
-              default: 1,
+              label: '备选半径',
+              description:
+                '若配置选项中半径为空，则此属性生效，所有散点统一半径',
+              default: 20,
               isInt: true,
               renderTrigger: true,
             },
