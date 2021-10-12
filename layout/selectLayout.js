@@ -5,11 +5,11 @@ function selectLayout(element, props, drawChart) {
   const propsConfig = props.config || {};
   const propsLabel = props.label || {};
   const propsData = propsConfig.echartsDataPreprocessing
-    // eslint-disable-next-line no-new-func
-    ? new Function(
-      'params',
-      `return ${propsConfig.echartsDataPreprocessing}`,
-    )()(props.data)
+    ? // eslint-disable-next-line no-new-func
+      new Function(
+        'params',
+        `return ${propsConfig.echartsDataPreprocessing}`,
+      )()(props.data)
     : props.data;
   const teams = [];
   propsData.forEach(data => {

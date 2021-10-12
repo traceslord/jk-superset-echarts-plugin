@@ -4,11 +4,11 @@ function basicLayout(element, props, drawChart) {
   const propsConfig = props.config || {};
   const propsLabel = props.label || {};
   const propsData = propsConfig.echartsDataPreprocessing
-    // eslint-disable-next-line no-new-func
-    ? new Function(
-      'params',
-      `return ${propsConfig.echartsDataPreprocessing}`,
-    )()(props.data)
+    ? // eslint-disable-next-line no-new-func
+      new Function(
+        'params',
+        `return ${propsConfig.echartsDataPreprocessing}`,
+      )()(props.data)
     : props.data;
   const randomNumber = Math.round(Math.random() * 1000000000000000);
   const html = `<div
