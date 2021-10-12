@@ -12,6 +12,8 @@ const {
   echartsOrder,
   echartsBackgroundColor,
 
+  echartsDataPreprocessing,
+
   echartsLegendShow,
   echartsLegendType,
   echartsLegendTop,
@@ -84,6 +86,12 @@ const {
 export default {
   controlPanelSections: [
     sections.legacyTimeseriesTime,
+    {
+      label: '数据预处理',
+      controlSetRows: [
+        [echartsDataPreprocessing],
+      ],
+    },
     {
       label: '配置选项',
       expanded: true,

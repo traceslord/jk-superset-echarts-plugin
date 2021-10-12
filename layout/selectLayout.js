@@ -4,8 +4,15 @@ import './selectLayout.css';
 function selectLayout(element, props, drawChart) {
   const propsConfig = props.config || {};
   const propsLabel = props.label || {};
+  const propsData = propsConfig.echartsDataPreprocessing
+    // eslint-disable-next-line no-new-func
+    ? new Function(
+      'params',
+      `return ${propsConfig.echartsDataPreprocessing}`,
+    )()(props.data)
+    : props.data;
   const teams = [];
-  props.data.forEach(data => {
+  propsData.forEach(data => {
     if (teams.indexOf(data[propsConfig.echartsSelect]) === -1) {
       teams.push(data[propsConfig.echartsSelect]);
     }
@@ -21,7 +28,7 @@ function selectLayout(element, props, drawChart) {
     }
   });
   const teamData = teams.map(t =>
-    props.data.filter(d => d[propsConfig.echartsSelect] === t),
+    propsData.filter(d => d[propsConfig.echartsSelect] === t),
   );
 
   const randomNumber = Math.round(Math.random() * 1000000000000000);

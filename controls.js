@@ -224,6 +224,18 @@ const controls = {
     },
   },
 
+  // 数据预处理
+  echartsDataPreprocessing: {
+    name: 'echarts_data_preprocessing',
+    config: {
+      type: 'TextAreaControl',
+      language: 'javascript',
+      label: '查询结果预处理',
+      description: '使用函数形式，参数约定为 params',
+      default: '',
+    },
+  },
+
   // 图例组件
   echartsLegendShow: {
     name: 'echarts_legend_show',
