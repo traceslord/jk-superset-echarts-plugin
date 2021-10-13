@@ -10,6 +10,7 @@ export default function buildQuery(formData) {
       echarts_picker: 'columns',
       echarts_groupby: 'columns',
       echarts_sort: 'columns',
+      echarts_preprocessing_data: 'columns',
     },
   });
 }

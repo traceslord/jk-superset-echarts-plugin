@@ -225,6 +225,29 @@ const controls = {
   },
 
   // 数据预处理
+  echartsPreprocessingData: {
+    name: 'echarts_preprocessing_data',
+    config: {
+      type: 'SelectControl',
+      label: '所需字段',
+      description: '预处理数据参数所需的查询字段',
+      default: [],
+      optionRenderer: c =>
+        React.createElement(ColumnOption, {
+          column: c,
+          showType: true,
+        }),
+      valueRenderer: c =>
+        React.createElement(ColumnOption, {
+          column: c,
+        }),
+      valueKey: 'column_name',
+      mapStateToProps: state => ({
+        options: state.datasource ? state.datasource.columns : [],
+      }),
+      multi: true,
+    },
+  },
   echartsDataPreprocessing: {
     name: 'echarts_data_preprocessing',
     config: {
