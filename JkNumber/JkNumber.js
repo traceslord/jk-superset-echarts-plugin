@@ -1,15 +1,21 @@
 import { formatColor } from '../utils/colors';
 
 function jkNumber(element, props) {
-  const { config } = props;
-  const randomNumber = Math.round(Math.random() * 1000000000000000);
-  let value = props.data;
+  const config = props.config || {};
+  const propsData = config.echartsDataPreprocessing
+    ? // eslint-disable-next-line no-new-func
+      new Function('params', `return ${config.echartsDataPreprocessing}`)()(
+        props.data,
+      )
+    : props.data;
+  let value = propsData;
   if (config.jkNumberFormatter) {
     // eslint-disable-next-line no-new-func
     value = new Function('num', `return ${config.jkNumberFormatter}`)()(
-      props.data,
+      propsData,
     );
   }
+  const randomNumber = Math.round(Math.random() * 1000000000000000);
   const html = `
   <div
     id="jk-number-${randomNumber}"
