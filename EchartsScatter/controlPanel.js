@@ -240,6 +240,17 @@ export default {
         [echartsXAxisNameLocation, echartsXAxisNameGap],
         [echartsXAxisNameRotate, echartsXAxisLabelRotate],
         [echartsXAxisInverse],
+        [
+          {
+            name: 'echarts_x_axis_scale',
+            config: {
+              type: 'CheckboxControl',
+              label: '是否是脱离 0 值比例',
+              default: true,
+              renderTrigger: true,
+            },
+          },
+        ],
       ],
     },
     {
@@ -250,6 +261,17 @@ export default {
         [echartsYAxisNameLocation, echartsYAxisNameGap],
         [echartsYAxisNameRotate, echartsYAxisLabelRotate],
         [echartsYAxisInverse],
+        [
+          {
+            name: 'echarts_y_axis_scale',
+            config: {
+              type: 'CheckboxControl',
+              label: '是否是脱离 0 值比例',
+              default: true,
+              renderTrigger: true,
+            },
+          },
+        ],
       ],
     },
     {

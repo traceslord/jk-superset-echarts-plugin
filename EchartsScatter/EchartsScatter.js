@@ -146,7 +146,7 @@ function drawChart(chart, teamData, teamIndex, propsConfig, propsLabel) {
       nameGap: propsConfig.echartsXAxisNameGap,
       nameRotate: propsConfig.echartsXAxisNameRotate,
       inverse: propsConfig.echartsXAxisInverse,
-      scale: true,
+      scale: propsConfig.echartsXAxisScale,
       axisLabel: {
         rotate: propsConfig.echartsXAxisLabelRotate,
       },
@@ -162,7 +162,7 @@ function drawChart(chart, teamData, teamIndex, propsConfig, propsLabel) {
       nameGap: propsConfig.echartsYAxisNameGap,
       nameRotate: propsConfig.echartsYAxisNameRotate,
       inverse: propsConfig.echartsYAxisInverse,
-      scale: true,
+      scale: propsConfig.echartsYAxisScale,
       axisLabel: {
         rotate: propsConfig.echartsYAxisLabelRotate,
       },
