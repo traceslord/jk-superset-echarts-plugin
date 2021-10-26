@@ -135,6 +135,7 @@ export const defaultby = config => {
   if (!val.echartsXAxisDataFormat) val.echartsXAxisDataFormat = false;
   if (!val.echartsXAxisDataFormatType) val.echartsXAxisDataFormatType = '';
   if (!val.echartsXAxisLabelInterval) val.echartsXAxisLabelInterval = '';
+  if (!val.echartsXAxisScale) val.echartsXAxisScale = false;
 
   // yAxis
   if (!val.echartsYAxisShow) val.echartsYAxisShow = false;
@@ -151,6 +152,7 @@ export const defaultby = config => {
   if (!val.echartsYAxisInverse2) val.echartsYAxisInverse2 = false;
   if (!val.echartsYAxisLabelInterval) val.echartsYAxisLabelInterval = '';
   if (!val.echartsYAxisLabelInterval2) val.echartsYAxisLabelInterval2 = '';
+  if (!val.echartsYAxisScale) val.echartsYAxisScale = false;
 
   // tooltip
   if (!val.echartsTooltipShow) val.echartsTooltipShow = false;

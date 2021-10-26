@@ -246,7 +246,7 @@ export default {
             config: {
               type: 'CheckboxControl',
               label: '是否是脱离 0 值比例',
-              default: true,
+              default: false,
               renderTrigger: true,
             },
           },
@@ -267,7 +267,7 @@ export default {
             config: {
               type: 'CheckboxControl',
               label: '是否是脱离 0 值比例',
-              default: true,
+              default: false,
               renderTrigger: true,
             },
           },

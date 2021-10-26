@@ -11,8 +11,21 @@ function selectLayout(element, props, drawChart) {
         `return ${propsConfig.echartsDataPreprocessing}`,
       )()(props.data)
     : props.data;
+  let metadata = [];
+  if (propsConfig.vizType === 'echarts_line') {
+    metadata = propsData.data;
+    propsConfig.echartsSeries = propsConfig.echartsSeries
+      ? propsData.series
+      : false;
+    propsConfig.echartsLegendData = propsConfig.echartsLegendData
+      ? propsData.legendData
+      : false;
+    propsConfig.echartsYAxisData = propsConfig.echartsYAxisData
+      ? propsData.yAxisData
+      : false;
+  } else metadata = propsData;
   const teams = [];
-  propsData.forEach(data => {
+  metadata.forEach(data => {
     if (teams.indexOf(data[propsConfig.echartsSelect]) === -1) {
       teams.push(data[propsConfig.echartsSelect]);
     }
@@ -28,7 +41,7 @@ function selectLayout(element, props, drawChart) {
     }
   });
   const teamData = teams.map(t =>
-    propsData.filter(d => d[propsConfig.echartsSelect] === t),
+    metadata.filter(d => d[propsConfig.echartsSelect] === t),
   );
 
   const randomNumber = Math.round(Math.random() * 1000000000000000);
