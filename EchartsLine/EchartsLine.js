@@ -31,7 +31,7 @@ function drawChart(chart, teamData, teamIndex, propsConfig, propsLabel) {
   const yAxis = [
     {
       show: propsConfig.echartsYAxisShow,
-      type: 'value',
+      type: propsConfig.echartsYAxisType,
       name: propsConfig.echartsYAxisName,
       nameLocation: propsConfig.echartsYAxisNameLocation,
       nameGap: propsConfig.echartsYAxisNameGap,
