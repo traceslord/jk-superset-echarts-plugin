@@ -1,4 +1,5 @@
 export { default as JkEchartsBarChartPlugin } from './EchartsBar/EchartsBarChartPlugin';
+export { default as JkEchartsDiyChartPlugin } from './EchartsDiy/EchartsDiyChartPlugin';
 export { default as JkEchartsGanttChartPlugin } from './EchartsGantt/EchartsGanttChartPlugin';
 export { default as JkEchartsHydrographChartPlugin } from './EchartsHydrograph/EchartsHydrographChartPlugin';
 export { default as JkEchartsLineChartPlugin } from './EchartsLine/EchartsLineChartPlugin';
