@@ -13,7 +13,7 @@ function echartsDiy(element, props) {
       new Function(
         'params',
         `return ${props.config.echartsDataPreprocessing}`,
-      )()(props)
+      )()(props.data)
     : {};
   chart.setOption(option);
 }
