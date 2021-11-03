@@ -25,104 +25,71 @@ function drawChart(chart, teamData, teamIndex, propsConfig, propsLabel) {
   propsConfig.echartsLegendNotSelected.forEach(data => {
     legendNotSelected[propsLabel[data]] = false;
   });
-  const legendData = propsConfig.echartsLegendData
-    ? propsConfig.echartsLegendData
-    : propsConfig.echartsYLeft.concat(propsConfig.echartsYRight);
-  const yAxis = [
-    {
-      show: propsConfig.echartsYAxisShow,
-      type: propsConfig.echartsYAxisType,
-      name: propsConfig.echartsYAxisName,
-      nameLocation: propsConfig.echartsYAxisNameLocation,
-      nameGap: propsConfig.echartsYAxisNameGap,
-      nameRotate: propsConfig.echartsYAxisNameRotate,
-      inverse: propsConfig.echartsYAxisInverse,
-      axisLabel: {
-        rotate: propsConfig.echartsYAxisLabelRotate,
+  const legendData = propsConfig.echartsYLeft.concat(propsConfig.echartsYRight);
+  const series = propsConfig.echartsYLeft
+    .map(item => ({
+      type: 'line',
+      name: propsLabel[item],
+      showSymbol: propsConfig.echartsSeriesShowSymbol,
+      showAllSymbol: propsConfig.echartsSeriesShowAllSymbol,
+      symbol: propsConfig.echartsSeriesSymbol,
+      symbolSize: [
+        propsConfig.echartsSeriesSymbolSizeWidth,
+        propsConfig.echartsSeriesSymbolSizeHeight,
+      ],
+      symbolRotate: propsConfig.echartsSeriesSymbolRotate,
+      symbolOffset: [
+        propsConfig.echartsSeriesSymbolOffsetHorizontal,
+        propsConfig.echartsSeriesSymbolOffsetVertical,
+      ],
+      step: propsConfig.echartsSeriesStep,
+      lineStyle: {
+        type: propsConfig.echartsSeriesLineStyleType,
+        width: propsConfig.echartsSeriesLineStyleWidth,
+        opacity: propsConfig.echartsSeriesLineStyleOpacity,
       },
-    },
-    {
-      show: propsConfig.echartsYAxisShow2,
-      type: 'value',
-      name: propsConfig.echartsYAxisName2,
-      nameLocation: propsConfig.echartsYAxisNameLocation2,
-      nameGap: propsConfig.echartsYAxisNameGap2,
-      nameRotate: propsConfig.echartsYAxisNameRotate2,
-      inverse: propsConfig.echartsYAxisInverse2,
-      axisLabel: {
-        rotate: propsConfig.echartsYAxisLabelRotate2,
+      areaStyle: {
+        opacity: propsConfig.echartsSeriesAreaStyleOpacity,
       },
-    },
-  ];
-  if (propsConfig.echartsYAxisData) {
-    yAxis[0].data = propsConfig.echartsYAxisData;
-  }
-  const series = propsConfig.echartsSeries
-    ? propsConfig.echartsSeries
-    : propsConfig.echartsYLeft
-        .map(item => ({
-          type: 'line',
-          name: propsLabel[item],
-          showSymbol: propsConfig.echartsSeriesShowSymbol,
-          showAllSymbol: propsConfig.echartsSeriesShowAllSymbol,
-          symbol: propsConfig.echartsSeriesSymbol,
-          symbolSize: [
-            propsConfig.echartsSeriesSymbolSizeWidth,
-            propsConfig.echartsSeriesSymbolSizeHeight,
-          ],
-          symbolRotate: propsConfig.echartsSeriesSymbolRotate,
-          symbolOffset: [
-            propsConfig.echartsSeriesSymbolOffsetHorizontal,
-            propsConfig.echartsSeriesSymbolOffsetVertical,
-          ],
-          step: propsConfig.echartsSeriesStep,
-          lineStyle: {
-            type: propsConfig.echartsSeriesLineStyleType,
-            width: propsConfig.echartsSeriesLineStyleWidth,
-            opacity: propsConfig.echartsSeriesLineStyleOpacity,
-          },
-          areaStyle: {
-            opacity: propsConfig.echartsSeriesAreaStyleOpacity,
-          },
-          legendHoverLink: propsConfig.echartsSeriesLegendHoverLink,
-          stack: propsConfig.echartsSeriesStack,
-          smooth: propsConfig.echartsSeriesSmooth,
-          connectNulls: propsConfig.echartsSeriesConnectNulls,
-          data: chartData.map(data => data[item]),
-        }))
-        .concat(
-          propsConfig.echartsYRight.map(item => ({
-            type: 'line',
-            name: propsLabel[item],
-            yAxisIndex: 1,
-            showSymbol: propsConfig.echartsSeriesShowSymbol2,
-            showAllSymbol: propsConfig.echartsSeriesShowAllSymbol2,
-            symbol: propsConfig.echartsSeriesSymbol2,
-            symbolSize: [
-              propsConfig.echartsSeriesSymbolSizeWidth2,
-              propsConfig.echartsSeriesSymbolSizeHeight2,
-            ],
-            symbolRotate: propsConfig.echartsSeriesSymbolRotate2,
-            symbolOffset: [
-              propsConfig.echartsSeriesSymbolOffsetHorizontal2,
-              propsConfig.echartsSeriesSymbolOffsetVertical2,
-            ],
-            step: propsConfig.echartsSeriesStep2,
-            lineStyle: {
-              type: propsConfig.echartsSeriesLineStyleType2,
-              width: propsConfig.echartsSeriesLineStyleWidth2,
-              opacity: propsConfig.echartsSeriesLineStyleOpacity2,
-            },
-            areaStyle: {
-              opacity: propsConfig.echartsSeriesAreaStyleOpacity2,
-            },
-            legendHoverLink: propsConfig.echartsSeriesLegendHoverLink2,
-            stack: propsConfig.echartsSeriesStack2,
-            smooth: propsConfig.echartsSeriesSmooth2,
-            connectNulls: propsConfig.echartsSeriesConnectNulls2,
-            data: chartData.map(data => data[item]),
-          })),
-        );
+      legendHoverLink: propsConfig.echartsSeriesLegendHoverLink,
+      stack: propsConfig.echartsSeriesStack,
+      smooth: propsConfig.echartsSeriesSmooth,
+      connectNulls: propsConfig.echartsSeriesConnectNulls,
+      data: chartData.map(data => data[item]),
+    }))
+    .concat(
+      propsConfig.echartsYRight.map(item => ({
+        type: 'line',
+        name: propsLabel[item],
+        yAxisIndex: 1,
+        showSymbol: propsConfig.echartsSeriesShowSymbol2,
+        showAllSymbol: propsConfig.echartsSeriesShowAllSymbol2,
+        symbol: propsConfig.echartsSeriesSymbol2,
+        symbolSize: [
+          propsConfig.echartsSeriesSymbolSizeWidth2,
+          propsConfig.echartsSeriesSymbolSizeHeight2,
+        ],
+        symbolRotate: propsConfig.echartsSeriesSymbolRotate2,
+        symbolOffset: [
+          propsConfig.echartsSeriesSymbolOffsetHorizontal2,
+          propsConfig.echartsSeriesSymbolOffsetVertical2,
+        ],
+        step: propsConfig.echartsSeriesStep2,
+        lineStyle: {
+          type: propsConfig.echartsSeriesLineStyleType2,
+          width: propsConfig.echartsSeriesLineStyleWidth2,
+          opacity: propsConfig.echartsSeriesLineStyleOpacity2,
+        },
+        areaStyle: {
+          opacity: propsConfig.echartsSeriesAreaStyleOpacity2,
+        },
+        legendHoverLink: propsConfig.echartsSeriesLegendHoverLink2,
+        stack: propsConfig.echartsSeriesStack2,
+        smooth: propsConfig.echartsSeriesSmooth2,
+        connectNulls: propsConfig.echartsSeriesConnectNulls2,
+        data: chartData.map(data => data[item]),
+      })),
+    );
 
   chart.setOption({
     legend: {
@@ -185,7 +152,32 @@ function drawChart(chart, teamData, teamIndex, propsConfig, propsLabel) {
         return data[propsConfig.echartsX];
       }),
     },
-    yAxis,
+    yAxis: [
+      {
+        show: propsConfig.echartsYAxisShow,
+        type: propsConfig.echartsYAxisType,
+        name: propsConfig.echartsYAxisName,
+        nameLocation: propsConfig.echartsYAxisNameLocation,
+        nameGap: propsConfig.echartsYAxisNameGap,
+        nameRotate: propsConfig.echartsYAxisNameRotate,
+        inverse: propsConfig.echartsYAxisInverse,
+        axisLabel: {
+          rotate: propsConfig.echartsYAxisLabelRotate,
+        },
+      },
+      {
+        show: propsConfig.echartsYAxisShow2,
+        type: 'value',
+        name: propsConfig.echartsYAxisName2,
+        nameLocation: propsConfig.echartsYAxisNameLocation2,
+        nameGap: propsConfig.echartsYAxisNameGap2,
+        nameRotate: propsConfig.echartsYAxisNameRotate2,
+        inverse: propsConfig.echartsYAxisInverse2,
+        axisLabel: {
+          rotate: propsConfig.echartsYAxisLabelRotate2,
+        },
+      },
+    ],
     tooltip: {
       show: propsConfig.echartsTooltipShow,
       trigger: propsConfig.echartsTooltipTrigger,

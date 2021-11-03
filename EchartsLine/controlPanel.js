@@ -14,6 +14,7 @@ const {
   echartsBackgroundColor,
 
   echartsPreprocessingData,
+  echartsDataPreprocessing,
 
   echartsLegendShow,
   echartsLegendType,
@@ -89,59 +90,7 @@ export default {
     sections.legacyTimeseriesTime,
     {
       label: '数据预处理',
-      controlSetRows: [
-        [echartsPreprocessingData],
-        [
-          {
-            name: 'echarts_data_preprocessing',
-            config: {
-              type: 'TextAreaControl',
-              language: 'javascript',
-              label: '查询结果预处理',
-              description:
-                '使用函数形式，参数约定为 params，返回一个对象，其中属性 data 约定为图表数据，series 约定为系列，legendData 约定为图例自定义数据数组，yAxisData 约定为 Y 轴类目数据',
-              default: `(params) => {
-  return {
-    data: params,
-  };
-};`,
-            },
-          },
-        ],
-        [
-          {
-            name: 'echarts_series',
-            config: {
-              type: 'CheckboxControl',
-              label: '是否启用系列',
-              description: '启用后将会覆盖配置选项里的 Y 轴选项',
-              default: false,
-            },
-          },
-        ],
-        [
-          {
-            name: 'echarts_legend_data',
-            config: {
-              type: 'CheckboxControl',
-              label: '是否启用图例自定义数据数组',
-              description: '',
-              default: false,
-            },
-          },
-        ],
-        [
-          {
-            name: 'echarts_y_axis_data',
-            config: {
-              type: 'CheckboxControl',
-              label: '是否启用 Y 轴类目数据',
-              description: '仅在坐标轴类型为类目轴时有效',
-              default: false,
-            },
-          },
-        ],
-      ],
+      controlSetRows: [[echartsPreprocessingData], [echartsDataPreprocessing]],
     },
     {
       label: '配置选项',
