@@ -28,6 +28,16 @@ function drawChart(chart, teamData, teamIndex, propsConfig, propsLabel) {
     type: 'scatter',
     name: propsLabel[item],
     symbolSize: params => params[3],
+    label: {
+      show: propsConfig.echartsNameShow === 'always',
+      position: 'top',
+      formatter: params => params.data[2],
+    },
+    itemStyle: {
+      shadowBlur: 10,
+      shadowColor: 'rgba(0, 0, 0, 0.2)',
+      shadowOffsetY: 5,
+    },
     emphasis: {
       focus: 'series',
       label: {
@@ -35,11 +45,6 @@ function drawChart(chart, teamData, teamIndex, propsConfig, propsLabel) {
         position: 'top',
         formatter: params => params.data[2],
       },
-    },
-    itemStyle: {
-      shadowBlur: 10,
-      shadowColor: 'rgba(0, 0, 0, 0.2)',
-      shadowOffsetY: 5,
     },
     data: chartData.map(subitem => [
       subitem[propsConfig.echartsX],

@@ -166,6 +166,23 @@ export default {
       controlSetRows: [
         [
           {
+            name: 'echarts_name_show',
+            config: {
+              type: 'SelectControl',
+              label: '名称显示方式',
+              description: '名称显示的方式',
+              default: 'emphasis',
+              choices: [
+                ['emphasis', '聚焦时显示'],
+                ['always', '一直显示'],
+              ],
+              clearable: false,
+              renderTrigger: true,
+            },
+          },
+        ],
+        [
+          {
             name: 'echarts_radius',
             config: {
               type: 'TextControl',
